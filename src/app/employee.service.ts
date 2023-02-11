@@ -5,7 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class EmployeeService {
 
-  constructor() {
-    //todo
- }
+  private apiServerUrl = '';
+
+  constructor(private http: HttpClient) { }
+
+  public getEmployees(): Observable<any> {
+    return this.http.get<any>(`${this.apiServerUrl}/employee/all`);
+  }
 }
